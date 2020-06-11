@@ -35,6 +35,7 @@
         flex-direction: row;
         align-items: center; 
         justify-content: space-between;"
+        margin-bottom: 20px;
       }
 
       .current {
@@ -82,11 +83,17 @@
 
       form div div select {
         height: 50px;
+        margin-bottom: 20px;
         border-radius: 5px;
       }
 
+      form div div select option{
+        padding: 20px;
+      }
+
       .file-image {
-        z-index: -1;
+        z-index: 3;
+        position: relative;
         opacity: 1;
       }
 
@@ -160,7 +167,7 @@
 
     <center><div class="container white">
       <div class="top">
-        <a href="#"><i class="ion-arrow-left-b"></i> Previous page</a>
+        <a href="#" style="visibility: hidden;"><i class="ion-arrow-left-b"></i> Previous page</a>
         <h3>Post Ad</h3>
         <a href="#">Clear field</a>
       </div>
@@ -170,7 +177,7 @@
         <div><h5>Step 2: Ad Details</h5></div>
       </div>
 
-      <form action="/action_page.php">
+      <form action="/action_page.php" method="post">
         <div>
           <div class="col-md-6">
             <select>
@@ -191,11 +198,18 @@
           </div>
         </div>
 
-        <div>
+        <div style="text-align: left; padding-left: 20px;">
           <h3>Add photo</h3>
           <p>First picture - is the title picture. You can change the order of photos: just grab your photos and drag</p>
 
-          <input type="file" name="image" accept="image/*" multiple="multiple" class="file-image">
+          <div style="display: flex; flex-direction: row;">
+            <label for="imageupload"><i class="ion-android-add-circle" style="font-size: 70px; color: #607d8b"></i></label><input type="file" name="image" accept="image/*" multiple="multiple" id="imageupload" style="display: none">
+
+            <div style="display: flex; flex-direction: row; flex-wrap: nowrap;">
+              <img src="assets/img/products/chrome-book-11.jpg" width="15%;">
+              <img src="assets/img/products/chrome-book-14.jpg" width="15%;">
+              <img src="assets/img/products/dell-inspiron-23.jpg" width="15%;"></div>
+          </div>
           <p>Each picture must not exceed 5 Mb<br>Supported formats are *.jpg, *.gif and *.png</p>
         </div>
 
@@ -220,6 +234,144 @@
         </div>
 
         <button type="submit" class="btn wide btn-success">NEXT</button>
+      </form>
+        
+    </div></center>
+
+    <center><div class="container white">
+      <div class="top">
+        <a href="#"><i class="ion-arrow-left-b"></i> Previous page</a>
+        <h3>Post Ad</h3>
+        <a href="#">Clear field</a>
+      </div>
+
+      <div class="current">
+        <div><h5>Step 1: About Ad</h5></div>
+        <div class="active"><h5>Step 2: Ad Details</h5></div>
+      </div>
+
+      <form action="/action_page.php" method="post">
+        <div>
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn wide btn-success">PUBLISH AD</button>
       </form>
         
     </div></center>
