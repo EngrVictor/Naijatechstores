@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title> NaijaTech Stores &middot; No1 Classidied Site For Gadget, Computer and Laptop, Accessories in Nigeria</title>
+    <title> NaijaTech Stores &middot; No1 Classified Site For Gadget, Computer and Laptop, Accessories in Nigeria</title>
 
     <meta name="description" content="No1 Classidied Site For Gadget, Computer and Laptop, Accessories in Nigeria">
     <meta name="keywords" content="unistore, laptops, gadgets, accessories, online store, buy, tablets, niyotek">
@@ -49,6 +49,10 @@
         width: 300px;
       }
 
+      .search-diag input:focus {
+        border:lightgreen solid 2px;
+      }
+
       .search-diag span{
         position: absolute;
         right: 10px;
@@ -62,6 +66,20 @@
 
       .search-diag ul li:hover {
         background: #eee;
+      }
+
+      @media (max-width: 768px) {
+         .search-diag {
+            display: flex; 
+            flex-direction: column; 
+/*            justify-content: center;*/
+            align-items: center;
+            /*display: none;*/
+          }
+
+          .search-diag input{
+            width: 300px;
+          }
       }
     </style> 
   </head>
@@ -492,7 +510,7 @@
 
         <div class="row">
 
-          <div class="col-sm-6 col-md-6 item">
+          <div class="col-sm-6 col-md-6 item spot">
 
             <div class="body">
               <a href="#" class="view"><i class="ion-ios-book-outline"></i></a>
@@ -648,22 +666,22 @@
   
           <div class="col-sm-6 col-md-4">
 
-            <img src="assets/img/products/Comp_1-min.gif" alt="">
+            <img src="assets/img/products/Comp_1-min.gif" alt="delivery gif" class="img-responsive">
           </div>
       			<!-- <hr class="offset-xs"> -->
   
-          <div class="col-sm-3 col-md-3 col-md-offset-1 align-right hidden-sm hidden-xs">
+          <div class="col-sm-3 col-md-3 col-md-offset-1 align-right">
             <h1 class="h4">Naijatechstores.</h1>
 
               <address>
-                1305 Market Street, Suite 800<br>
-                San Francisco, CA 94102<br>
+                27, Adeniyi street,<br>
+                Itire Surulere, Lagos<br>
                 <abbr title="Phone">P:</abbr> (123) 456-7890
               </address>
 
               <address>
                 <strong>Support</strong><br>
-                <a href="mailto:#">sup@example.com</a>
+                <a href="mailto:#">support@niyotechtehnologies.com</a>
               </address>
 
           </div>
@@ -714,17 +732,20 @@
     <script type="text/javascript" src="assets/js/jquery-ui-1.11.4.js"></script>
     <script type="text/javascript" src="assets/js/jquery.ui.touch-punch.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
     <script type="text/javascript">
       let host = document.querySelectorAll('.dropdown-toggle');
       let prey = document.querySelectorAll('.dropdown-menu');
+      let products = document.querySelector('.products');
+      let blogs = document.querySelector('.spot');
+      let caret = document.querySelectorAll('.caret');
 
       multiple = Array.from(prey);
       multiple1 = Array.from(host);
+      carets = Array.from(caret);
 
-      multiple1.forEach(current => {
-        current.addEventListener('focus', event => {
-
-          span = current.parentNode.querySelector('.caret')
+      let addCaret = current => {
+        span = current.parentNode.querySelector('.caret')
           span.style = `
             transform: rotate(360deg);
             transition: .4s ease;
@@ -734,25 +755,102 @@
             display: none;
             `
           },1000)
-        })
+      }
 
-        current.addEventListener('onchange', event => {
-          span.style = `
-            display: block;
+      let removeCaret = caret => {
+          caret.style = `
+              display: block;
           `;
-        })
-      })
+      }
 
-      window.addEventListener('click', evn => {
-        console.log(evn)
-      })
+
+      carets.forEach(current => {
+         window.addEventListener('click', () => {
+            removeCaret(current);
+            // console.log(current);
+        })
+      });
+
+      multiple1.forEach(current => {
+        current.addEventListener('focus', () => {
+          addCaret(current);
+        })
+      });
 
       multiple.forEach((current, index) => {
         current.addEventListener('click', event => {
           multiple1[index].value = event.target.outerText;
         })
       });
-        
+
+      let addBlog = entry => {
+        let markup = `
+          <div class="body">
+              <a href="#" class="view"><i class="ion-ios-book-outline"></i></a>
+              <a href="#">
+                <img src="${entry.fields.logo.fields.file.url}" title="${entry.fields.logo.fields.title}" alt="${entry.fields.logo.fields.description}">
+              </a>
+
+              <div class="caption">
+                <h2 class="h3">${entry.fields.companyName}</h2>
+                <label> ${entry.sys.createdAt}</label>
+                <hr class="offset-sm">
+
+                <p>
+                  ${entry.fields.companyDescription}
+                </p>
+                <hr class="offset-sm">
+
+                <a href="#"> View article <i class="ion-ios-arrow-right"></i> </a>
+              </div>
+            </div>
+          </div>
+        `;
+
+        blogs.insertAdjacentHTML('beforeend', markup);
+      }
+
+      let addSpinner = () => {
+        let markup = `
+          <center><img src="assets/img/products/spinningwheel.gif" class="spinner" alt="spinner"></center>
+        `;
+
+        products.insertAdjacentHTML('beforeend', markup);
+      }
+
+      let removeSpinner = () => {
+        let el = document.querySelector('.spinner');
+
+        el.remove();
+      }
+
+      addSpinner();
+      
+
+      let client = contentful.createClient({
+        space: 'xai0al1ows0s',
+        accessToken: 'O4iy74XCWHyoxSivUqhJkudOfKU0RdQTMzbsIsVWshY'
+      })
+
+      let entryId = '651CQ8rLoIYCeY6G0QG22q';
+      let entryId2 = '7LAnCobuuWYSqks6wAwY2a';
+      let assetId = '3wtvPBbBjiMKqKKga8I2Cu';
+
+      client.getEntry(entryId)
+      .then((entry) => {
+        console.log(entry);
+        removeSpinner();
+        addBlog(entry);
+      }).catch(console.error)
+      
+
+      // client.getEntry(entryId2)
+      // .then((entry) => console.log(entry))
+      // .catch(console.error)
+
+      client.getAsset(assetId)
+      .then((asset) => console.log(asset))
+      .catch(console.error)
     </script>
 
   </body>

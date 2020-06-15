@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title> Product name &middot; NaijaTech Stores &middot; No1 Classidied Site For Gadget, Computer and Laptop, Accessories in Nigeria</title>
+    <title> Product name &middot; NaijaTech Stores &middot; No1 Classified Site For Gadget, Computer and Laptop, Accessories in Nigeria</title>
 
     <meta name="description" content="No1 Classidied Site For Gadget, Computer and Laptop, Accessories in Nigeria">
     <meta name="keywords" content="unistore, laptops, gadgets, accessories, online store, buy, tablets, niyotek">
@@ -34,6 +34,24 @@
     .toplinks button {
       padding: 30px;
     }
+
+    .button-group {
+      position: fixed; 
+      top: 500px; 
+      right: 0; 
+      display: flex; 
+      justify-content: space-between; 
+      z-index: 3
+    }
+
+    @media (max-width: 768px) {
+         .button-group > *{
+            padding: 5px 10px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px; 
+          }
+      }
   </style>
   <body>
 
@@ -61,7 +79,7 @@
         </div><!--/.container-fluid -->
     </nav>
 
-    <div style="position: fixed; top: 500px; right: 0; display: flex; justify-content: space-between; z-index: 3">
+    <div class="button-group">
         <a href="tel:+80005554465" class=" btn btn-primary"> <i class="ion-android-cart"></i> Call To Buy</a>  
         <button class="btn btn-primary" data-toggle="modal" data-target="#Modal-Callback"><i class="ion-android-sync"></i> Seller's Callback</button>  
         <button class="btn btn-primary" data-toggle="modal" data-target="#Modal-Delivery"><i class="ion-bag"></i> Click For Free Delivery</button>  
@@ -452,11 +470,11 @@
   
           <div class="col-sm-6 col-md-4">
 
-            <img src="assets/img/products/Comp_1-min.gif" alt="">
+            <img src="assets/img/products/Comp_1-min.gif" alt=""  class="img-responsive">
           </div>
             <!-- <hr class="offset-xs"> -->
   
-          <div class="col-sm-3 col-md-3 col-md-offset-1 align-right hidden-sm hidden-xs">
+          <div class="col-sm-3 col-md-3 col-md-offset-1 align-right">
             <h1 class="h4">Naijatechstores.</h1>
 
               <address>
@@ -647,22 +665,6 @@
 
     <script type="text/javascript" src="assets/js/jquery-ui-1.11.4.js"></script>
     <script type="text/javascript" src="assets/js/jquery.ui.touch-punch.js"></script>
-
-    <script type="text/javascript">
-      $(document).ready(function(){
-      });
-
-      app.get('/', function(req, res) {
-          var products = { name: 'Bloody Mary', drunkness: 3 }
-          
-          var tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.";
-
-          res.render('product', {
-              products: products,
-              tagline: tagline
-          });
-      });
-    </script>
 
   </body>
 </html>
