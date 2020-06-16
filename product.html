@@ -17,7 +17,7 @@
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/carousel-product.css" rel="stylesheet">
     <link href="assets/ionicons-2.0.1/css/ionicons.css" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
     <link href='https://fonts.googleapis.com/css?family=Catamaran:400,100,300' rel='stylesheet' type='text/css'>
 
     <link href="assets/css/custom-scroll/jquery.mCustomScrollbar.css" rel="stylesheet">
@@ -35,13 +35,42 @@
       padding: 30px;
     }
 
+    .rollin {
+        -webkit-animation: schowContent 0.7s 0.55s ease-out forwards;
+        -moz-animation:    schowContent 0.7s 0.55s ease-out forwards;
+        -o-animation:      schowContent 0.7s 0.55s ease-out forwards;
+        animation:         schowContent 0.7s 0.55s ease-out forwards;
+      }
+
+      @-webkit-keyframes schowContent {
+        from   { -webkit-transform: translateX(100px); opacity: 0; }
+        to { -webkit-transform: translateX(0px); opacity: 1; }
+      }
+      @-moz-keyframes schowContent {
+        from   { -moz-transform: translateX(100px); opacity: 0; }
+        to { -moz-transform: translateX(0px); opacity: 1; }
+      }
+      @-o-keyframes schowContent {
+        from   { -o-transform: translateX(100px); opacity: 0; }
+        to { -o-transform: translateX(0px); opacity: 1; }
+      }
+      @keyframes schowContent {
+        from   { transform: translateX(100px); opacity: 0; }
+        to { transform: translateX(0px); opacity: 1; }
+      }
+
     .button-group {
       position: fixed; 
       top: 500px; 
       right: 0; 
       display: flex; 
       justify-content: space-between; 
-      z-index: 3
+      z-index: 100;
+      opacity: 0;
+    }
+
+    .button-group > * {
+      z-index: 5;
     }
 
     @media (max-width: 768px) {
@@ -79,7 +108,7 @@
         </div><!--/.container-fluid -->
     </nav>
 
-    <div class="button-group">
+    <div class="rollin button-group">
         <a href="tel:+80005554465" class=" btn btn-primary"> <i class="ion-android-cart"></i> Call To Buy</a>  
         <button class="btn btn-primary" data-toggle="modal" data-target="#Modal-Callback"><i class="ion-android-sync"></i> Seller's Callback</button>  
         <button class="btn btn-primary" data-toggle="modal" data-target="#Modal-Delivery"><i class="ion-bag"></i> Click For Free Delivery</button>  
@@ -112,15 +141,15 @@
 
 
                 <div class="item center" data-marker="1">
-                  <img src="assets/img/product/1.jpg" alt="Microsoft Surface Studio" class="background"/>
+                  <img src="assets/img/products/chrome-book-11.jpg" alt="Microsoft Surface Studio" class="background"/>
                 </div>
                 
                 <div class="item" data-marker="2">
-                  <img src="assets/img/product/2.jpg" alt="Microsoft Surface Studio" class="background"/>
+                  <img src="assets/img/products/chrome-book-14.jpg" alt="Microsoft Surface Studio" class="background"/>
                 </div>
 
                 <div class="item" data-marker="3">
-                  <img src="assets/img/product/3.jpg" alt="Microsoft Surface Studio" class="background"/>
+                  <img src="assets/img/products/chrome-book-asus.jpg" alt="Microsoft Surface Studio" class="background"/>
                 </div>
 
                 <div class="item" data-marker="4">
@@ -181,11 +210,11 @@
           <div class="col-sm-7 white sm-padding">
             <hr class="offset-sm visible-xs">
 
-            <h2 class="h1"><%= products.name %></h2>
+            <h2 class="h1">iMac 27 Retina</h2>
             <br>
 
             <p>
-              <%= tagline %>
+              The stylish HP Chromebook provides a speedy connection to your protected online content and automatically updated apps, all within an ultra-thin full-sized notebook, providing a comfortable gateway to surf, socialize and play.
             </p>
             <br>
 

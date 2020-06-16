@@ -29,38 +29,37 @@ app.set('view engine', 'ejs');
 const contentful = require('contentful')
 
 let client = contentful.createClient({
-  space: 'xai0al1ows0s',
-  accessToken: 'O4iy74XCWHyoxSivUqhJkudOfKU0RdQTMzbsIsVWshY'
+  space: '506rx1s4kvpq',
+  accessToken: 'cpYUmV3UQjbOMBkY90P-CDkzE1cy5fpdhPdaEvfAn_g'
 })
 
-let entryId = '651CQ8rLoIYCeY6G0QG22q';
-let entryId2 = '7LAnCobuuWYSqks6wAwY2a';
+let entryId = '6Jk1gKk1upCKWfHikSRSyh';
 
 client.getEntry(entryId)
-.then((entry) => console.log(entry))
+.then((entry) => {
+  start(entry);
+})
 .catch(console.error)
 
-client.getEntry(entryId2)
-.then((entry) => console.log(entry))
-.catch(console.error)
 
-app.get('/', function(req, res) {
-        res.render('pages/index', {'result': {
-          ProductName: 'name',
-          age: 32,
-          job: 'software developer',
-        }
-        });
+let start = entry => {
+  app.get('/product', function(req, res) {
+    res.render('pages/product', {'result': {
+      data: entry,
+    }
     });
+  });
 
-    app.get('/product', function(req, res) {
-        res.render('pages/product', {'result': {
-          ProductName: 'name',
-          age: 32,
-          job: 'software developer',
-        }
-        });
-    });
+  app.get('/', function(req, res) {
+      res.render('pages/index', {'result': {
+        ProductName: 'name',
+        age: 32,
+        job: 'software developer',
+      }
+      });
+  });
+}
+
 
 
 app.listen(port, function() {
