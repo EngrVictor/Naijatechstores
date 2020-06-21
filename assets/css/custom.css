@@ -127,6 +127,7 @@
 		background-color: transparent !important;
 		color: #fff !important;
 		display: flex;
+		align-items: center;
 		padding-bottom: 5px;
 	}
 
