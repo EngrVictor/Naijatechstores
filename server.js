@@ -41,20 +41,36 @@ client.getEntry(entryId)
 })
 .catch(console.error)
 
+let priceSplit = given => {
+  let price = given.toString().split('');
+
+  if (price.length >= 4) {
+    let newPrice = price.splice(-3);
+    let currentPrice = price.join('') + ',' + newPrice.join('');
+
+    if (currentPrice.length > 7) {
+      let current = currentPrice.toString().split('');
+      let endPrice = current.splice(-7);
+      currentPrice = current.join('') + ',' + endPrice.join('');
+    }
+    return currentPrice;
+  }
+}
 
 let start = entry => {
+  let newPrice = priceSplit(entry.fields.price);
+
   app.get('/product', function(req, res) {
-    res.render('pages/product', {'result': {
+    res.render('product', {'result': {
       data: entry,
+      price: newPrice,
     }
     });
   });
 
   app.get('/', function(req, res) {
-      res.render('pages/index', {'result': {
-        ProductName: 'name',
-        age: 32,
-        job: 'software developer',
+      res.render('index', {'result': {
+        data: entry,
       }
       });
   });

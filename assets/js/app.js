@@ -59,8 +59,8 @@ let host = document.querySelectorAll('.dropdown-toggle');
                 <h2 class="h3">${entry.fields.productName} ${entry.fields.processor} ${entry.fields.hardDrive} ${entry.fields.memory}</h2>
                 <hr class="offset-sm">
 
-                <a class="btn btn-link" href="product.html"> <i class="ion-android-open"></i> Details</a>
-                <button class="btn btn-primary btn-sm rounded"> <i class="ion-android-call"></i> Contact Seller</button>
+                <a class="btn btn-link" href="/product"> <i class="ion-android-open"></i> Details</a>
+                <a class="btn btn-primary btn-sm rounded" href="tel:+2347017578648"> <i class="ion-android-call"></i> Contact Seller</a>
               </div>
             </div>
           </div>
