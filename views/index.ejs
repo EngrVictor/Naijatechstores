@@ -17,7 +17,7 @@
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/carousel.css" rel="stylesheet">
     <link href="assets/ionicons-2.0.1/css/ionicons.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Catamaran:400,100,300' rel='stylesheet' type='text/css'>
 
     <link href="assets/css/custom-scroll/jquery.mCustomScrollbar.css" rel="stylesheet">
@@ -68,6 +68,87 @@
         background: #eee;
       }
 
+  
+      #back-to-top-btn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 26px;
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        color: #333;
+        cursor: pointer;
+        outline: none;
+        border: 3px solid #333;
+        border-radius: 50%;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+        transition-property: background-color, color;
+        z-index: 5;
+      }
+      #back-to-top-btn:hover, #back-to-top-btn:focus {
+        background-color: #333;
+        color: #fff;  
+      }
+
+      /*btn Animations */
+      .btnEntrance {
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+        animation-name: btnEntrance;
+      }
+      /* zoomIn */
+      /* @keyframes btnEntrance { 
+        from {
+          opacity: 0;
+          transform: scale3d(0.3, 0.3, 0.3);
+        }
+        to {
+          opacity: 1;
+        }    
+      } */
+
+      /* fadeInUp */
+      @keyframes btnEntrance {
+        from {
+          opacity: 0;
+          transform: translate3d(0, 100%, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .btnExit {
+        animation-duration: 0.25s;
+        animation-fill-mode: both;  
+        animation-name: btnExit;
+      }
+      /* zoomOut */
+      /* @keyframes btnExit {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+          transform: scale3d(0.3, 0.3, 0.3);
+        }
+      } */
+
+      /* fadeOutDown */
+      @keyframes btnExit {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+          transform: translate3d(0, 100%, 0);
+        }
+      }
+
       @media (max-width: 768px) {
          .search-diag {
             display: flex; 
@@ -89,7 +170,8 @@
       <a href="#" data-toggle="modal" data-target="#Modal-Gallery"> <i class="ion-ios-heart"></i> Favorites </a>
       <a href="tel:+2347017578648" class="hidden-xs"> <i class="ion-android-call"></i> 0701 757 8648</a>
     </div>
-
+    
+    <button href="#" id="back-to-top-btn" title="back to top" data><i class="ion-eject"></i></button>
     
     <nav class="navbar navbar-default">
         <div class="container">
@@ -554,6 +636,58 @@
 
     <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
     <script type="text/javascript" src="assets/js/app.js"></script>
+
+    <!-- script for back to top transition effect -->
+    <script type="text/javascript">
+      const backToTopButton = document.querySelector("#back-to-top-btn");
+
+      window.addEventListener("scroll", scrollFunction);
+
+      function scrollFunction() {
+        if (window.pageYOffset > 300) { // Show backToTopButton
+          if(!backToTopButton.classList.contains("btnEntrance")) {
+            backToTopButton.classList.remove("btnExit");
+            backToTopButton.classList.add("btnEntrance");
+            backToTopButton.style.display = "block";
+          }
+        }
+        else { // Hide backToTopButton
+          if(backToTopButton.classList.contains("btnEntrance")) {
+            backToTopButton.classList.remove("btnEntrance");
+            backToTopButton.classList.add("btnExit");
+            setTimeout(function() {
+              backToTopButton.style.display = "none";
+            }, 250);
+          }
+        }
+      }
+
+      backToTopButton.addEventListener("click", smoothScrollBackToTop);
+
+      function smoothScrollBackToTop() {
+        const targetPosition = 0;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        const duration = 750;
+        let start = null;
+        
+        window.requestAnimationFrame(step);
+
+        function step(timestamp) {
+          if (!start) start = timestamp;
+          const progress = timestamp - start;
+          window.scrollTo(0, easeInOutCubic(progress, startPosition, distance, duration));
+          if (progress < duration) window.requestAnimationFrame(step);
+        }
+      }
+
+      function easeInOutCubic(t, b, c, d) {
+        t /= d/2;
+        if (t < 1) return c/2*t*t*t + b;
+        t -= 2;
+        return c/2*(t*t*t + 2) + b;
+      };
+    </script>
 
   </body>
 </html>
