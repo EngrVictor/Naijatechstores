@@ -59,7 +59,7 @@ let host = document.querySelectorAll('.dropdown-toggle');
                 <h2 class="h3">${entry.fields.productName} ${entry.fields.processor} ${entry.fields.hardDrive} ${entry.fields.memory}</h2>
                 <hr class="offset-sm">
 
-                <a class="btn btn-link" href="/product"> <i class="ion-android-open"></i> Details</a>
+                <a class="btn btn-link" href="/product/${entry.sys.id}"> <i class="ion-android-open"></i> Details</a>
                 <a class="btn btn-primary btn-sm rounded" href="tel:+2347017578648"> <i class="ion-android-call"></i> Contact Seller</a>
               </div>
             </div>
@@ -69,12 +69,16 @@ let host = document.querySelectorAll('.dropdown-toggle');
         content.insertAdjacentHTML('beforeend', markup);
       }
 
-      let products = [];
+      let generateEach = entry => {
+        products = [addProducts(entry)];
 
-      let generate = entry => {
-        for(let i = 0; i < 50; i++) {
-          products[i] = addProducts(entry);
+        for(let i = 0; i < products.length; i++) {
+          // addProducts(entry);
         }
+      };
+
+      let generateAll = entry => {
+        addProducts(entry);
       };
 
       let priceSplit = given => {
@@ -121,19 +125,18 @@ let host = document.querySelectorAll('.dropdown-toggle');
       // .then((entry) => {
       //   console.log(entry.fields);
       //   // removeSpinner();
-      //   generate(entry);
+      //   generateAll(entry);
       //   // addProducts(entry);
         
       // }).catch(console.error)
 
       client.getEntries()
       .then((response) => {
-        console.log(response.items[Math.round(Math.random() * 1)].fields)
+        console.log(response.items[0])
         removeSpinner();
-        generate(response.items[Math.round(Math.random() * 1)]);
-        setTimeout(() => {
-          generate(response.items[Math.round(Math.random() * 1)]);
-        }, 2000)
+        for (var i = 0; i < response.items.length; i++) {
+          generateAll(response.items[i]);
+        }
       })
       .catch(console.error)
 
@@ -144,5 +147,10 @@ let host = document.querySelectorAll('.dropdown-toggle');
       // client.getAsset(assetId)
       // .then((asset) => console.log(asset))
       // .catch(console.error)
+
+      let capture = () => {
+       var getEntry = id;
+       localStorage.setItem("storageName",getEntry);
+      }
 
       
