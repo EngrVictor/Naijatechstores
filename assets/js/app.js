@@ -52,7 +52,7 @@ let host = document.querySelectorAll('.dropdown-toggle');
           <div class="col-sm-6 col-md-3 product">
             <div class="body">
               <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="https:${entry.fields.images[0].fields.file.url}" title="${entry.fields.images[0].fields.title}" alt="${entry.fields.images[0].fields.file.fileName}"/></a>
+              <a href="/product/${entry.sys.id}"><img src="https:${entry.fields.images[0].fields.file.url}" title="${entry.fields.images[0].fields.title}" alt="${entry.fields.images[0].fields.file.fileName}"/></a>
 
               <div class="content align-center">
                 <p class="price">₦${priceSplit(entry.fields.price)}</p>

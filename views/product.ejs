@@ -5,22 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title> <%= result.data.fields.productName %> &middot; NaijaTech Stores &middot; No1 Classified Site For Gadget, Computer and Laptop, Accessories in Nigeria</title>
+    <title> </title>
 
     <meta name="description" content="No1 Classidied Site For Gadget, Computer and Laptop, Accessories in Nigeria">
     <meta name="keywords" content="unistore, laptops, gadgets, accessories, online store, buy, tablets, niyotek">
     <meta name="author" content="Gentle Coder">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/products/logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/products/logo.png">
     
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
-    <link href="assets/css/carousel-product.css" rel="stylesheet">
-    <link href="assets/ionicons-2.0.1/css/ionicons.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/custom.css" rel="stylesheet">
+    <link href="../assets/css/carousel-product.css" rel="stylesheet">
+    <link href="../assets/ionicons-2.0.1/css/ionicons.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
     <link href='https://fonts.googleapis.com/css?family=Catamaran:400,100,300' rel='stylesheet' type='text/css'>
 
-    <link href="assets/css/custom-scroll/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="../assets/css/custom-scroll/jquery.mCustomScrollbar.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -93,7 +93,7 @@
     <nav class="navbar navbar-default">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand logo" href="/"><img src="assets/img/products/logo.png"></a>
+            <a class="navbar-brand logo" href="/"><img src="../assets/img/products/logo.png"></a>
             <a class="navbar-brand pull-right hidden-sm hidden-md hidden-lg" href="/"></a>
           </div>
 
@@ -130,187 +130,7 @@
 
 
     <section class="product top">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-7 col-md-7 white no-padding">
-            <div class="carousel-product" data-count="4" data-current="1">
-
-              <div class="items">
-                <button class="btn btn-control" data-direction="right"> <i class="ion-ios-arrow-right"></i></button>
-                <button class="btn btn-control" data-direction="left"> <i class="ion-ios-arrow-left"></i></button>
-
-
-                <div class="item center" data-marker="1">
-                  <img src="https:<%= result.data.fields.images[0].fields.file.url %>" alt="<%= result.data.fields.images[0].fields.file.fileName %>" class="background"/>
-                </div>
-                
-                <div class="item" data-marker="2">
-                  <img src="https:<%= result.data.fields.images[1].fields.file.url %>" alt="Microsoft Surface Studio" class="background"/>
-                </div>
-
-                <div class="item" data-marker="3">
-                  <img src="https:<%= result.data.fields.images[0].fields.file.url %>" alt="Microsoft Surface Studio" class="background"/>
-                </div>
-
-                <div class="item" data-marker="4">
-                  <img src="https:<%= result.data.fields.images[1].fields.file.url %>" alt="Microsoft Surface Studio" class="background"/>
-                </div>
-              </div>
-
-              <ul class="markers">
-                <li data-marker="1" class="active"></li>
-                <li data-marker="2"></li>
-                <li data-marker="3"></li>
-                <li data-marker="4"></li>
-              </ul>
-
-            </div>
-          </div>
-          <div class="col-sm-5 col-md-5 no-padding-xs">
-            <div class="caption">
-              <img src="assets/img/brands/microsoft.png" alt="Microsoft" class="brand hidden-xs hidden-sm" />
-
-              <h1><%= result.data.fields.productName %></h1>
-
-              <p> &middot; <%= result.data.fields.operatingSystem %>™</p>
-              <p> &middot; 28 Inch PixelSense™ Display</p>
-              <p> &middot; <%= result.data.fields.processor%></p>
-              <hr class="offset-md hidden-sm">
-              <hr class="offset-sm visible-sm">
-              <hr class="offset-xs visible-sm">
-
-              <p class="price">$<%= result.price.newPrice %></p>
-              <p class="price through">$3 449.99</p>
-              <hr class="offset-md">
-
-              <button class="btn btn-primary rounded"> <i class="ion-bag"></i> Buy now</button>
-              <button class="btn btn-link"> <i class="ion-ios-heart"></i> See later </button>
-            </div>
-          </div>
-        </div>
-        <hr class="offset-sm hidden-xs">
-
-        <div class="row">
-          <div class="col-sm-7 white sm-padding">
-            <hr class="offset-sm visible-xs">
-
-            <h2 class="h1"><%= result.data.fields.productName %></h2>
-            <br>
-
-            <p>
-                <%= result.data.fields.description %>
-            </p>
-            <br>
-
-             <h2>Product specifications</h2>
-             <br>
-
-              <div class="row specification">
-                <div class="col-sm-4"> <label>Operating system</label> </div>
-                <div class="col-sm-8"> <p><%= result.data.fields.operatingSystem %>™</p> </div>
-              </div>
-
-              <div class="row specification">
-                <div class="col-sm-4"> <label>Display</label> </div>
-                <div class="col-sm-8">
-                    <%= result.data.fields.display %>
-                </div>
-              </div>
-              
-              <div class="row specification">
-                <div class="col-sm-4"> <label>Processor</label> </div>
-                <div class="col-sm-8"> <p><%= result.data.fields.processor %></p> </div>
-              </div>
-
-              <div class="row specification">
-                <div class="col-sm-4"> <label>Processor technology</label> </div>
-                <div class="col-sm-8"> <p>Intel Turbo Boost Technology</p> </div>
-              </div>
-
-              <div class="row specification">
-                <div class="col-sm-4"> <label>Graphics</label> </div>
-                <div class="col-sm-8"> <p><%= result.data.fields.graphics %></p> </div>
-              </div>
-
-              <div class="row specification">
-                <div class="col-sm-4"> <label>Memory</label> </div>
-                <div class="col-sm-8"> <p><%= result.data.fields.memory %> RAM</p> </div>
-              </div>
-
-              <div class="row specification">
-                <div class="col-sm-4"> <label>Hard drive</label> </div>
-                <div class="col-sm-8"> <p><%= result.data.fields.hardDrive %> HDD</p> </div>
-              </div>
-
-              <div class="row specification">
-                <div class="col-sm-4"> <label>Wireless</label> </div>
-                <div class="col-sm-8">
-                  <p>
-                    <%= result.data.fields.wireless %>
-                  </p>
-                </div>
-              </div>
-
-              <div class="row specification">
-                <div class="col-sm-4"> <label>Power supply</label> </div>
-                <div class="col-sm-8"> <p><%= result.data.fields.powerSupply %></p> </div>
-              </div>
-
-              <div class="row specification">
-                <div class="col-sm-4"> <label>Battery</label> </div>
-                <div class="col-sm-8"> <p><%= result.data.fields.battery %></p> </div>
-              </div>
-
-              <hr class="offset-lg">
-          </div>
-          <div class="col-sm-5 no-padding-xs">
-            <div class="talk white">
-              <h2 class="h3">Do you have any questions?</h2>
-              <p class="">Chat now with our manager</p>
-              <hr class="offset-md">
-
-              <a href="tel:+80005554465" class="btn btn-primary btn-sm"> <i class="ion-social-whatsapp"></i> 0701 757 8648 </a>
-              <hr class="offset-md visible-xs">
-            </div>
-            <hr class="offset-sm hidden-xs">
-
-            <div class="comments white">
-              <h2 class="h3">What do you think? (#3)</h2>
-              <br>
-
-
-              <div class="wrapper">
-                <div class="content">
-                  <h3>Anne Hathaway</h3>
-                  <label>2 years ago</label>
-                  <p>
-                    Apple Music brings iTunes music streaming to the UK. But is it worth paying for? In our Apple Music review, we examine the service's features, UK pricing, audio quality and music library
-                  </p>
-
-
-                  <h3>Chris Hemsworth</h3>
-                  <label>Today</label>
-                  <p>
-                    Samsung's Galaxy S7 smartphone is getting serious hype. Here's what it does better than Apple's iPhone 6s.
-                  </p>
-
-
-                  <h3>Anne Hathaway</h3>
-                  <label>2 years ago</label>
-                  <p>
-                    Apple Music brings iTunes music streaming to the UK. But is it worth paying for? In our Apple Music review, we examine the service's features, UK pricing, audio quality and music library
-                  </p>
-                </div>
-              </div>
-              <hr class="offset-lg">
-              <hr class="offset-md">
-
-              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal-Comment"> <i class="ion-chatbox-working"></i> Add comment </button>
-              <hr class="offset-md visible-xs">
-            </div>            
-          </div>
-        </div>
-      </div>
+      
     </section>
     <hr class="offset-lg">
 
@@ -324,7 +144,7 @@
           <div class="col-sm-4 col-md-3 product">
             <div class="body">
               <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="assets/img/products/apple-imac-27-retina.jpg" alt="Apple iMac 27 Retina"/></a>
+              <a href="./"><img src="../assets/img/products/apple-imac-27-retina.jpg" alt="Apple iMac 27 Retina"/></a>
 
               <div class="content align-center">
                 <p class="price">$2099.99</p>
@@ -340,7 +160,7 @@
           <div class="col-sm-4 col-md-3 product">
             <div class="body">
               <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="assets/img/products/dell-inspiron-23.jpg" alt="Dell Inspion 23"/></a>
+              <a href="./"><img src="../assets/img/products/dell-inspiron-23.jpg" alt="Dell Inspion 23"/></a>
 
               <div class="content align-center">
                 <p class="price">$1987.99</p>
@@ -356,7 +176,7 @@
           <div class="col-sm-4 col-md-3 product">
             <div class="body">
               <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="assets/img/products/lenovo-yoga.jpg" alt="Lenovo Yoga 900"/></a>
+              <a href="./"><img src="../assets/img/products/lenovo-yoga.jpg" alt="Lenovo Yoga 900"/></a>
 
               <div class="content align-center">
                 <p class="price">$1899.99</p>
@@ -372,7 +192,7 @@
           <div class="col-sm-6 col-md-3 product hidden-sm">
             <div class="body">
               <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="./"><img src="assets/img/products/hp-spectre-x360.jpg" alt="HP Spectre x360"/></a>
+              <a href="./"><img src="../assets/img/products/hp-spectre-x360.jpg" alt="HP Spectre x360"/></a>
 
               <div class="content align-center">
                 <p class="price">$2994.99</p>
@@ -399,30 +219,22 @@
           <div class="row">
             <hr class="offset-md">
 
-            <div class="col-xs-6 col-sm-3">
+            <center>
+              <div class="col-xs-6 col-sm-6">
               <div class="item">
                 <i class="ion-ios-telephone-outline"></i>
                 <h1>24/7 free <br> <span>support</span></h1>
               </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
+            </center>
+            <center>
+              <div class="col-xs-6 col-sm-6">
               <div class="item">
                 <i class="ion-ios-star-outline"></i>
                 <h1>Low price <br> <span>guarantee</span></h1>
               </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
-              <div class="item">
-                <i class="ion-ios-gear-outline"></i>
-                <h1> Manufacturer’s <br> <span>warranty</span></h1>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-              <div class="item">
-                <i class="ion-ios-loop"></i>
-                <h1> Full refund <br> <span>guarantee</span> </h1>
-              </div>
-            </div>
+            </center>
 
             <hr class="offset-md">
           </div>
@@ -462,38 +274,71 @@
             <hr class="offset-md">
         </div>
       </div>
-
+      
+      <div class="modal fade" id="Modal-Gallery" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="ion-android-close"></i></span></button>
+            <h4 class="modal-title">Favorites</h4>
+          </div>
+          <div class="modal-body">
+            <p>You currently have no favorites</p>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
 
       <div class="container">
         <hr class="offset-md">
 
         <div class="row menu">
           <div class="col-sm-5 col-md-4">
-            <h1 class="h4">About <i class="ion-plus-round hidden-sm hidden-md hidden-lg"></i> </h1>
+            <h1 class="h4">Naijatechstores. <i class="ion-plus-round hidden-sm hidden-md hidden-lg"></i> </h1>
 
            <p>Naijatechstores is the first online warehouse dedicated to computers and accessories. Here,you can get all varieties of brands and specifications of laptops. We guarantee the reliability and durability of laptop(s) you buy on our site</p>
           </div>
   
           <div class="col-sm-6 col-md-4">
 
-            <img src="assets/img/products/Comp_1-min.gif" alt=""  class="img-responsive">
+            <img src="assets/img/products/Comp_1-min.gif" alt="delivery gif" class="img-responsive">
           </div>
             <!-- <hr class="offset-xs"> -->
   
-          <div class="col-sm-3 col-md-3 col-md-offset-1 align-right">
-            <h1 class="h4">Naijatechstores.</h1>
+          <div class="col-sm-3 col-md-3 col-md-offset-1">
+            <h1 class="h4">24/7 free support:</h1>
 
-              <address>
-                1305 Market Street, Suite 800<br>
-                San Francisco, CA 94102<br>
-                <abbr title="Phone">P:</abbr> (123) 456-7890
-              </address>
+            <div style="display: flex; width: 100%; justify-content: center;">
+              <div style="display: flex; flex-direction: column; width: 50%;">
+                <address>
+                  27, Adeniyi street,<br>
+                  Itire Surulere, Lagos<br>
+                </address>
 
-              <address>
-                <strong>Support</strong><br>
-                <a href="mailto:#">sup@example.com</a>
-              </address>
+                <address>
+                  16 Onawale Street, <br>
+                  off ire akari Road, <br>
+                  oshodi isolo Lagos<br>
+                  <a href="https://api.whatsapp.com/send?phone=09035630717"><i class="ion-social-whatsapp"></i> 09035630717</a>
+                </address>
+              </div>
 
+              <div style="display: flex; flex-direction: column; width: 50%;">
+                <address>
+                  104 Lawanson Rd, <br>
+                  Itire Surulere, Lagos<br>
+                </address>
+
+                <address>
+                  <strong>Support</strong><br>
+                  <a href="mailto:#">support@niyotechtehnologies.com</a>
+                </address>
+              </div>
+              
+            </div>
+            
           </div>
         </div>
       </div>
@@ -502,20 +347,8 @@
 
       <div class="container">
         <div class="row">
-          <div class="col-sm-9 col-md-9 payments">
-            <p>Pay your order in the most convenient way</p>
-
-            <div class="payment-icons">
-              <img src="assets/img/payments/paypal.svg" alt="paypal">
-              <img src="assets/img/payments/visa.svg" alt="visa">
-              <img src="assets/img/payments/master-card.svg" alt="mc">
-              <img src="assets/img/payments/discover.svg" alt="discover">
-              <img src="assets/img/payments/american-express.svg" alt="ae">
-            </div>
-            <br>
-
           </div>
-          <div class="col-sm-3 col-md-3 align-right align-center-xs">
+          <div>
             <hr class="offset-sm hidden-sm">
             <hr class="offset-sm">
             <p>Copyright 2020 © Powered By Niyotek Technologies Designed By Webideasnetwork All Rights Reserved.</p>
@@ -658,19 +491,217 @@
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="assets/js/jquery-latest.min.js"></script>
+    <script src="../assets/js/jquery-latest.min.js"></script>
     
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/core.js"></script>
-    <script src="assets/js/store.js"></script>
-    <script src="assets/js/carousel-product.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.touchSwipe.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/core.js"></script>
+    <script src="../assets/js/store.js"></script>
+    <script src="../assets/js/carousel-product.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.touchSwipe.min.js"></script>
 
-    <script type="text/javascript" src="assets/js/custom-scroll/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="../assets/js/custom-scroll/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <script type="text/javascript" src="assets/js/jquery-ui-1.11.4.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.ui.touch-punch.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-ui-1.11.4.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.ui.touch-punch.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+
+    <script type="text/javascript">
+      let title = document.querySelector('title');
+      let content = document.querySelector('.product');
+
+      let addSpinner = () => {
+        let markup = `
+          <center><img src="../assets/img/products/spinningwheel.gif" class="spinner" alt="spinner"></center>
+        `;
+
+        content.insertAdjacentHTML('beforeend', markup);
+      }
+
+      addSpinner();
+
+      let removeSpinner = () => {
+        let el = document.querySelector('.spinner');
+
+        el.remove();
+      }
+
+      let client = contentful.createClient({
+        space: '506rx1s4kvpq',
+        accessToken: 'cpYUmV3UQjbOMBkY90P-CDkzE1cy5fpdhPdaEvfAn_g'
+      })
+
+      let entryId = '<%= entryId %>';
+
+      client.getEntry(entryId)
+      .then((entry) => {
+        removeSpinner();
+        addProduct(entry);
+      })
+      .catch(console.error)
+
+      let priceSplit = given => {
+        let price = given.toString().split('');
+
+        if (price.length >= 4) {
+          let newPrice = price.splice(-3);
+          let currentPrice = price.join('') + ',' + newPrice.join('');
+
+          if (currentPrice.length > 7) {
+            let current = currentPrice.toString().split('');
+            let endPrice = current.splice(-7);
+            currentPrice = current.join('') + ',' + endPrice.join('');
+          }
+          return currentPrice;
+        }
+      }
+
+      let addProduct = entry => {
+        let markup = `
+          <div class="container">
+        <div class="row">
+          <div class="col-sm-7 col-md-7 white no-padding">
+            <div class="carousel-product" data-count="4" data-current="1">
+
+              <div class="items">
+                <button class="btn btn-control" data-direction="right"> <i class="ion-ios-arrow-right"></i></button>
+                <button class="btn btn-control" data-direction="left"> <i class="ion-ios-arrow-left"></i></button>
+
+
+                <div class="item center" data-marker="1">
+                  <img src="https:${entry.fields.images[0].fields.file.url}" alt="${entry.fields.images[0].fields.file.fileName}" class="background"/>
+                </div>
+                
+                <div class="item" data-marker="2">
+                  <img src="https:${entry.fields.images[1].fields.file.url}" alt="${entry.fields.images[1].fields.file.url}" class="background"/>
+                </div>
+
+                <div class="item" data-marker="3">
+                  <img src="https:${entry.fields.images[2].fields.file.url}" alt="${entry.fields.images[1].fields.file.url}" class="background"/>
+                </div>
+
+                <div class="item" data-marker="4">
+                  <img src="https:${entry.fields.images[3].fields.file.url}" alt="${entry.fields.images[1].fields.file.url}" class="background"/>
+                </div>
+              </div>
+
+              <ul class="markers">
+                <li data-marker="1" class="active"></li>
+                <li data-marker="2"></li>
+                <li data-marker="3"></li>
+                <li data-marker="4"></li>
+              </ul>
+
+            </div>
+          </div>
+          <div class="col-sm-5 col-md-5 no-padding-xs">
+            <div class="caption">
+              <img src="../assets/img/brands/microsoft.png" alt="Microsoft" class="brand hidden-xs hidden-sm" />
+
+              <h1>${entry.fields.productName}</h1>
+
+              <p> &middot; ${entry.fields.operatingSystem}™</p>
+              <p> &middot; 28 Inch PixelSense™ Display</p>
+              <p> &middot; ${entry.fields.processor}</p>
+              <hr class="offset-md hidden-sm">
+              <hr class="offset-sm visible-sm">
+              <hr class="offset-xs visible-sm">
+
+              <p class="price">₦${priceSplit(entry.fields.price)}</p>
+              <p class="price through">$3 449.99</p>
+              <hr class="offset-md">
+
+              <button class="btn btn-primary rounded"> <i class="ion-bag"></i> Buy now</button>
+              <button class="btn btn-link"> <i class="ion-ios-heart"></i> See later </button>
+            </div>
+          </div>
+        </div>
+        <hr class="offset-sm hidden-xs">
+
+        <div class="row">
+          <div class="col-sm-7 white sm-padding">
+            <hr class="offset-sm visible-xs">
+
+            <h2 class="h1">${entry.fields.productName}</h2>
+            <br>
+
+            <p>
+                ${entry.fields.description}
+            </p>
+            <br>
+
+             <h2>Product specifications</h2>
+             <br>
+
+              <div class="row specification">
+                <div class="col-sm-4"> <label>Operating system</label> </div>
+                <div class="col-sm-8"> <p>${entry.fields.operatingSystem}™</p> </div>
+              </div>
+
+              <div class="row specification">
+                <div class="col-sm-4"> <label>Display</label> </div>
+                <div class="col-sm-8">
+                    ${entry.fields.display}
+                </div>
+              </div>
+              
+              <div class="row specification">
+                <div class="col-sm-4"> <label>Processor</label> </div>
+                <div class="col-sm-8"> <p>${entry.fields.processor}</p> </div>
+              </div>
+
+              <div class="row specification">
+                <div class="col-sm-4"> <label>Processor technology</label> </div>
+                <div class="col-sm-8"> <p>Intel Turbo Boost Technology</p> </div>
+              </div>
+
+              <div class="row specification">
+                <div class="col-sm-4"> <label>Graphics</label> </div>
+                <div class="col-sm-8"> <p>${entry.fields.graphics}</p> </div>
+              </div>
+
+              <div class="row specification">
+                <div class="col-sm-4"> <label>Memory</label> </div>
+                <div class="col-sm-8"> <p>${entry.fields.memory}</p> </div>
+              </div>
+
+              <div class="row specification">
+                <div class="col-sm-4"> <label>Hard drive</label> </div>
+                <div class="col-sm-8"> <p>${entry.fields.hardDrive}</p> </div>
+              </div>
+
+              <div class="row specification">
+                <div class="col-sm-4"> <label>Wireless</label> </div>
+                <div class="col-sm-8">
+                  <p>
+                    ${entry.fields.wireless}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row specification">
+                <div class="col-sm-4"> <label>Power supply</label> </div>
+                <div class="col-sm-8"> <p>${entry.fields.powerSupply}</p> </div>
+              </div>
+
+              <div class="row specification">
+                <div class="col-sm-4"> <label>Battery</label> </div>
+                <div class="col-sm-8"> <p>${entry.fields.battery}</p> </div>
+              </div>
+
+              <hr class="offset-lg">
+          </div>
+
+        </div>
+      </div>
+        `;
+
+        title.innerHTML = ` ${entry.fields.productName} &middot; NaijaTech Stores &middot; No1 Classified Site For Gadget, Computer and Laptop, Accessories in Nigeria`;
+
+        content.insertAdjacentHTML('beforeend', markup);
+      }
+    </script>
 
   </body>
 </html>
