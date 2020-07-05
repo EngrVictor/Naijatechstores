@@ -551,6 +551,7 @@
 
 					-webkit-transform: translateY(0px);
 					transform: translateY(0px);
+					min-height: 520px;
 				}
 				.products .product:hover .body {
 					-webkit-transform: translateY(-4px);

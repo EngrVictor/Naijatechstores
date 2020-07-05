@@ -5,6 +5,7 @@
 // get all the tools we need
 // ================================================================
 var express = require('express');
+var bodyParser = require('body-parser');
 // var routes = require('./routes.js');
 var port = process.env.PORT || 3000;
 
@@ -25,7 +26,7 @@ app.set('view engine', 'ejs');
 // ================================================================
 // start our server
 // ================================================================
-
+  app.use(bodyParser.urlencoded({ extended: true }));
 
   app.get('/product/:id', function(req, res) {
 
@@ -37,6 +38,10 @@ app.set('view engine', 'ejs');
 
   app.get('/', function(req, res) {
       res.render('index')
+  });
+
+  app.post('/store', function(req, res) {
+    res.render('store', {'received': req.body.brand});
   });
 
 

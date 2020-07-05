@@ -17,6 +17,7 @@
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/carousel.css" rel="stylesheet">
     <link href="assets/ionicons-2.0.1/css/ionicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Catamaran:400,100,300' rel='stylesheet' type='text/css'>
 
@@ -62,6 +63,7 @@
       .search-diag ul li {
         padding: 5px;
         cursor: pointer;
+        text-align: center;
       }
 
       .search-diag ul li:hover {
@@ -210,9 +212,9 @@
                 <div class="inside-content">
                   <div class="container align-center">
                   
-                    <div class="search-diag row">
+                    <form class="search-diag row" action="/store" method="post">
                       <div class="dropdown">
-                        <input class="dropdown-toggle" type="select" data-toggle="dropdown" placeholder="Brands">
+                        <input class="dropdown-toggle" type="select" data-toggle="dropdown" placeholder="Brands" name="brand">
                         <span class="caret"></span></input>
                         <ul class="dropdown-menu">
                           <li>Apple</li>
@@ -226,31 +228,19 @@
                     </div> -->
 
                       <div class="dropdown">
-                        <input class="dropdown-toggle" type="select" data-toggle="dropdown" placeholder="Price Range">
+                        <input class="dropdown-toggle" type="select" data-toggle="dropdown" placeholder="Price Range" name="price">
                         <span class="caret"></span></input>
                         <ul class="dropdown-menu">
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
-                          <li>₦15000-₦20000</li>
+                          <li class="1_range">₦15000 - ₦20000</li>
+                          <li class="2_range">₦25000 - ₦30000</li>
+                          <li class="3_range">₦35000 - ₦40000</li>
+                          <li class="4_range">₦45000 - ₦50000</li>
+                          <li class="5_range">₦55000 - ₦60000</li>
+                          <li class="6_range">₦65000 - ₦70000</li>
+                          <li class="7_range">₦75000 - ₦80000</li>
+                          <li class="8_range">₦85000 - ₦90000</li>
+                          <li class="9_range">₦95000 - ₦100000</li>
+                          <li class="10_range">₦100000+</li>
                         </ul>
                       </div>
                     
@@ -258,7 +248,7 @@
                       <div>
                         <input type="submit" name="search" value="Search" class="seacrhfield">
                       </div>
-                    </div>  
+                    </form>  
                   </div>
                 </div>
               </div>
@@ -590,7 +580,7 @@
           <div class="col-sm-5 col-md-4">
             <h1 class="h4">Naijatechstores. <i class="ion-plus-round hidden-sm hidden-md hidden-lg"></i> </h1>
 
-           <p>Naijatechstores is the first online warehouse dedicated to computers and accessories. Here,you can get all varieties of brands and specifications of laptops. We guarantee the reliability and durability of laptop(s) you buy on our site</p>
+           <p>Naijatechstores is an authentic online warehouse dedicated to computers and accessories. Here,you can get all varieties of brands and specifications of laptops. We guarantee the reliability and durability of laptop(s) you buy on our site</p>
           </div>
   
           <div class="col-sm-6 col-md-4">
@@ -613,7 +603,7 @@
                   16 Onawale Street, <br>
                   off ire akari Road, <br>
                   oshodi isolo Lagos<br>
-                  <a href="https://api.whatsapp.com/send?phone=09035630717"><i class="ion-social-whatsapp"></i> 09035630717</a>
+                  <a href="https://api.whatsapp.com/send?phone=07036061730" target="_blank"><i class="ion-social-whatsapp"></i> 07036061730</a>
                 </address>
               </div>
 

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+let startCarousel = function(){
 	// Init
 		carouselInit();
 		markersInit();
@@ -101,7 +101,7 @@ $(document).ready(function(){
 			});
 		//Swipe function
 //Swipe
-});
+};
 
 
 function carouselInit() {
