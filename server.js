@@ -31,7 +31,6 @@ app.set('view engine', 'ejs');
   app.get('/product/:id', function(req, res) {
 
     let entryId = req.params.id;
-    console.log(req.params.id)
 
     res.render('product', {'entryId': entryId});
   });

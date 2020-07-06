@@ -121,18 +121,8 @@ let host = document.querySelectorAll('.dropdown-toggle');
 
       let entryId = '11A5beQDhUeiFyKcaXipYN';
 
-      // client.getEntry(entryId)
-      // .then((entry) => {
-      //   console.log(entry.fields);
-      //   // removeSpinner();
-      //   generateAll(entry);
-      //   // addProducts(entry);
-        
-      // }).catch(console.error)
-
       client.getEntries()
       .then((response) => {
-        console.log(response.items[0])
         removeSpinner();
         for (var i = 0; i < response.items.length; i++) {
           generateAll(response.items[i]);
