@@ -18,7 +18,7 @@
     <link href="assets/css/carousel.css" rel="stylesheet">
     <link href="assets/ionicons-2.0.1/css/ionicons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link href='https://fonts.googleapis.com/css?family=Catamaran:400,100,300' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
     <link href="assets/css/custom-scroll/jquery.mCustomScrollbar.css" rel="stylesheet">
 
@@ -498,6 +498,12 @@
           entries.items.forEach(function (entry) {
             addProduct(entry);
           })
+
+          if (entries.items = []) {
+            let markup = `<p class="h3">No such product available at this time check other avaiable products`;
+            removeSpinner();
+            content.insertAdjacentHTML('beforeend', markup);
+          }
       })
       .catch(console.error)
 
@@ -539,6 +545,22 @@
         title.innerHTML = ` All <%= received %> &middot; NaijaTech Stores &middot; No1 Classified Site For Gadget, Computer and Laptop, Accessories in Nigeria`;
 
         content.insertAdjacentHTML('beforeend', markup);
+      }
+
+      let addSpinner = () => {
+        let markup = `
+          <center><img src="../assets/img/products/spinningwheel.gif" class="spinner" alt="spinner"></center>
+        `;
+
+        content.insertAdjacentHTML('beforeend', markup);
+      }
+
+      addSpinner();
+
+      let removeSpinner = () => {
+        let el = document.querySelector('.spinner');
+
+        el.remove();
       }
 
       // let filterByBrand => () {
