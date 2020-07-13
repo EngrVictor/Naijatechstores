@@ -52,11 +52,11 @@ let host = document.querySelectorAll('.dropdown-toggle');
           <div class="col-sm-6 col-md-3 product">
             <div class="body">
               <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-              <a href="/product/${entry.sys.id}"><img src="https:${entry.fields.images[0].fields.file.url}" title="${entry.fields.images[0].fields.title}" alt="${entry.fields.images[0].fields.file.fileName}"/></a>
+              <a href="/product/${entry.sys.id}"><img src="https:${entry.fields.images[0].fields.file.url}" title="${entry.fields.productName}" alt="${entry.fields.productName}"/></a>
 
               <div class="content align-center">
                 <p class="price">₦${priceSplit(entry.fields.price)}</p>
-                <h2 class="h3">${entry.fields.productName} ${entry.fields.processor} ${entry.fields.hardDrive} ${entry.fields.memory}</h2>
+                <h2 class="h3">${nameSplit(entry.fields.productName)} <br>${entry.fields.processor} <br>${entry.fields.hardDrive} ${entry.fields.memory}</h2>
                 <hr class="offset-sm">
 
                 <a class="btn btn-link" href="/product/${entry.sys.id}"> <i class="ion-android-open"></i> Details</a>
@@ -96,6 +96,26 @@ let host = document.querySelectorAll('.dropdown-toggle');
           return currentPrice;
         }
       }
+
+      let nameSplit = given => {
+        let name = given.split(' ');
+        let newName = [];
+
+        if (name.length >= 3) {
+
+          for (var i = 0; i < 3; i++) {
+            newName[i] = name[i]
+          }
+
+          let currentName = newName.join(' ') + `<span title="${given}">...</span>`;
+          return currentName;
+        }else {
+          return given;
+        }
+        
+      }
+
+      nameSplit('victor okpara');
 
       let addSpinner = () => {
         let markup = `

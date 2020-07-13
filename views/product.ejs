@@ -68,12 +68,19 @@
     }
 
     @media (max-width: 768px) {
-         .button-group > *{
-            padding: 5px 10px;
-            font-size: 12px;
-            line-height: 1.5;
-            border-radius: 3px; 
-          }
+        .button-group { 
+          bottom: 5;
+          top: 600px;
+          width: 100%;
+          background: black; 
+        }
+
+        .button-group > *{
+          padding: 5px 10px;
+          font-size: 12px;
+          line-height: 1.5;
+          border-radius: 3px; 
+        }
       }
   </style>
   <body>
@@ -122,7 +129,7 @@
 
     <section class="products">
       <div class="container">
-        <h2 class="upp align-center-xs"> Related products </h2>
+        <h3 class="upp align-center-xs"> Related products </h3>
         <hr class="offset-lg">
 
         <div class="row related">
@@ -433,6 +440,7 @@
       let title = document.querySelector('title');
       let content = document.querySelector('.product');
       let related = document.querySelector('.related');
+      let body = document.querySelector('body');
 
       let addSpinner = () => {
         let markup = `
@@ -487,6 +495,65 @@
         return newName;
       }
 
+      let addPowerBank = entry => {
+        let markup = `
+          <div class="modal fade" id="Modal-Gallery" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="ion-android-close"></i></span></button>
+                    <li><img src="https:${entry.fields.images[0].fields.file.url}" alt="${entry.fields.images[0].fields.file.fileName}"></li>
+                  <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                  <div class="carousel-product" data-count="4" data-current="1">
+
+                <div class="items">
+                  <button class="btn btn-control" data-direction="right"> <i class="ion-ios-arrow-right"></i></button>
+                  <button class="btn btn-control" data-direction="left"> <i class="ion-ios-arrow-left"></i></button>
+
+
+                  <div class="item center" data-marker="1">
+                    <img src="https:${entry.fields.images[0].fields.file.url}" alt="${entry.fields.images[0].fields.file.fileName}" class="background"/>
+                  </div>
+                  
+                  <div class="item" data-marker="2">
+                    <img src="https:${entry.fields.images[1].fields.file.url}" alt="${entry.fields.images[1].fields.file.url}" class="background"/>
+                  </div>
+
+                  <div class="item" data-marker="3">
+                    <img src="https:${entry.fields.images[2].fields.file.url}" alt="${entry.fields.images[2].fields.file.url}" class="background"/>
+                  </div>
+
+                  <div class="item" data-marker="4">
+                    <img src="https:${entry.fields.images[3].fields.file.url}" alt="${entry.fields.images[3].fields.file.url}" class="background"/>
+                  </div>
+                </div>
+
+                <ul class="markers">
+                  <li data-marker="1" class="active"></li>
+                  <li data-marker="2"></li>
+                  <li data-marker="3"></li>
+                  <li data-marker="4"></li>
+                </ul>
+
+              </div>
+                </div>
+                <div class="modal-footer">
+                  <ul>
+                    <li><img src="https:${entry.fields.images[0].fields.file.url}" alt="${entry.fields.images[0].fields.file.fileName}"></li>
+                    <li><img src="https:${entry.fields.images[1].fields.file.url}" alt="${entry.fields.images[1].fields.file.fileName}"></li>
+                    <li><img src="https:${entry.fields.images[2].fields.file.url}" alt="${entry.fields.images[2].fields.file.fileName}"></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+
+        body.insertAdjacentHTML('beforeend', markup);
+      }
+
       let addProduct = entry => {
         let markup = `
         <div class="container">
@@ -508,11 +575,11 @@
                   </div>
 
                   <div class="item" data-marker="3">
-                    <img src="https:${entry.fields.images[2].fields.file.url}" alt="${entry.fields.images[1].fields.file.url}" class="background"/>
+                    <img src="https:${entry.fields.images[2].fields.file.url}" alt="${entry.fields.images[2].fields.file.url}" class="background"/>
                   </div>
 
                   <div class="item" data-marker="4">
-                    <img src="https:${entry.fields.images[3].fields.file.url}" alt="${entry.fields.images[1].fields.file.url}" class="background"/>
+                    <img src="https:${entry.fields.images[3].fields.file.url}" alt="${entry.fields.images[3].fields.file.url}" class="background"/>
                   </div>
                 </div>
 
@@ -529,10 +596,10 @@
               <div class="caption">
                 <img src="../assets/img/brands/microsoft.png" alt="Microsoft" class="brand hidden-xs hidden-sm" />
 
-                <h1>${entry.fields.productName}</h1>
+                <h2 class="h1">${entry.fields.productName}</h2>
 
-                <p> &middot; ${entry.fields.operatingSystem}™</p>
-                <p> &middot; 28 Inch PixelSense™ Display</p>
+                <p> &middot; Windows™</p>
+                <p> &middot; Screen size</p>
                 <p> &middot; ${entry.fields.processor}</p>
                 <hr class="offset-md hidden-sm">
                 <hr class="offset-sm visible-sm">
@@ -553,15 +620,15 @@
             <div class="col-sm-7 white sm-padding">
               <hr class="offset-sm visible-xs">
 
-              <h2 class="h1">${entry.fields.productName}</h2>
+              <h2>${entry.fields.productName}</h2>
               <br>
 
               <p>
-                  ${entry.fields.description}
+                  Description
               </p>
               <br>
 
-               <h2>Product specifications</h2>
+               <h3>Product specifications</h3>
                <br>
 
                 <div class="row specification">
@@ -621,7 +688,7 @@
 
         content.insertAdjacentHTML('beforeend', markup);
         startCarousel();
-
+      
         client.getEntries({
          'query': `${nameSplit(entry.fields.productName)}`
         })

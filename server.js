@@ -35,6 +35,13 @@ app.set('view engine', 'ejs');
     res.render('product', {'entryId': entryId});
   });
 
+  app.get('/powerbank', function(req, res) {
+
+    let entryId = req.params.id;
+
+    res.render('powerbank', {'entryId': entryId});
+  });
+
   app.get('/', function(req, res) {
       res.render('index')
   });

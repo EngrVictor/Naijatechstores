@@ -494,14 +494,13 @@
         'query': '<%= received %>'
       })
       .then(function (entries) {
-          
+          removeSpinner();
           entries.items.forEach(function (entry) {
             addProduct(entry);
           })
 
-          if (entries.items = []) {
+          if (entries.items.length == 0) {
             let markup = `<p class="h3">No such product available at this time check other avaiable products`;
-            removeSpinner();
             content.insertAdjacentHTML('beforeend', markup);
           }
       })
