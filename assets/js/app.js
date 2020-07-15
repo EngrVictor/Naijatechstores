@@ -69,14 +69,6 @@ let host = document.querySelectorAll('.dropdown-toggle');
         content.insertAdjacentHTML('beforeend', markup);
       }
 
-      let generateEach = entry => {
-        products = [addProducts(entry)];
-
-        for(let i = 0; i < products.length; i++) {
-          // addProducts(entry);
-        }
-      };
-
       let generateAll = entry => {
         addProducts(entry);
       };
@@ -111,11 +103,8 @@ let host = document.querySelectorAll('.dropdown-toggle');
           return currentName;
         }else {
           return given;
-        }
-        
+        }  
       }
-
-      nameSplit('victor okpara');
 
       let addSpinner = () => {
         let markup = `
@@ -141,7 +130,10 @@ let host = document.querySelectorAll('.dropdown-toggle');
 
       let entryId = '11A5beQDhUeiFyKcaXipYN';
 
-      client.getEntries()
+      client.getEntries( {
+        content_type: 'product'
+      })
+
       .then((response) => {
         removeSpinner();
         for (var i = 0; i < response.items.length; i++) {
@@ -149,14 +141,6 @@ let host = document.querySelectorAll('.dropdown-toggle');
         }
       })
       .catch(console.error)
-
-      // client.getEntry(entryId2)
-      // .then((entry) => console.log(entry))
-      // .catch(console.error)
-
-      // client.getAsset(assetId)
-      // .then((asset) => console.log(asset))
-      // .catch(console.error)
 
       let capture = () => {
        var getEntry = id;

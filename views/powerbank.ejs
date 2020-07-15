@@ -27,6 +27,9 @@
             margin-top: 40px;
             justify-content: center;
         }
+        header img {
+          width: 100%;
+        }
 
         .left-container img{
             width: 50%
@@ -79,6 +82,11 @@
   </head>
 
   <body>
+    <header>
+            <img src="assets/img/carousel/bckg-2.jpeg" alt="Background" class="background hidden-xs hidden-sm img-responsive"/>
+            <img src="assets/img/carousel/bckg-2-sm.jpeg" alt="Background" class="background visible-sm img-responsive"/>
+            <img src="assets/img/carousel/bckg-2-xs.jpeg" alt="Background" class="background visible-xs img-responsive"/>
+    </header>
     <div class="toplinks">
       <a href="#" data-toggle="modal" data-target="#Modal-Gallery"> <i class="ion-ios-heart"></i> Favorites </a>
       <a href="tel:+2347017578648" class="hidden-xs"> <i class="ion-android-call"></i> 0701 757 8648</a>
@@ -94,63 +102,8 @@
     </nav>
     <hr class="offset-lg">
     <hr class="offset-lg">
-
-    <div class="panel panel-default container thumbnail">
-
-        <div class="ads-list-archive">
-             <!-- Image Block -->
-             <div class="col-lg-4 col-md-4 col-sm-4 no-padding">
-                <!-- Img Block -->
-                <div class="ad-archive-img list-3">
-                                    
-                                    
-                                    
-                   <a href="#" data-toggle="modal" data-target="#Modal-Gallery">
-                      <img src="https://naijatechstores.com/wp-content/uploads/2020/05/Untitled-4-313x234.jpg" alt="Acer aspire 5630" class="img-responsive">
-                                          
-                   </a>
-                </div>
-                <!-- Img Block -->
-             </div>
-             <!-- Ads Listing -->
-             <div class="clearfix visible-xs-block"></div>
-             <!-- Content Block -->
-             <div class="col-lg-8 col-md-8 col-sm-8 no-padding">
-                <!-- Ad Desc -->
-                <div class="ad-archive-desc">
-                   <!-- Price -->
-                   <div class="ad-price">
-                    <h2>product name</h2>
-                    <h5>Brand: <a href="#">Phily</a> | <a href="#">Similar products from Phily</a></h5>
-                   </div>
-                   <!-- Title -->
-                   <hr>
-                   <h2 class="price">₦6,000</h2>
-                   <!-- Category -->
-                   <div class="category-title"><button class="btn btn-small btn-primary btn-block"><i class="ion-android-call"></i> CALL TO BUY</button></div>
-                   <!-- Short Description -->
-                   <hr>
-                   <div class="clearfix visible-xs-block"></div>
-
-                   
-                   <!-- Ad History -->
-                    <div class="clearfix archive-history">
-                      <div class="last-updated"><h3>Device Specification</h3></div>
-                            <div class="ad-meta">
-                                <ul>
-                                    <li>detail</li>
-                                    <li>detail</li>
-                                    <li>detail</li>
-                                    <li>detail</li>
-                                    <li>detail</li>
-                                </ul>
-                            </div>
-                   </div>
-                </div>
-                <!-- Ad Desc End -->
-             </div>
-             <!-- Content Block End -->
-        </div>
+    <div class="content">
+      
     </div>
 
     <div class="panel panel-default container thumbnail">
@@ -309,7 +262,7 @@
             <!-- <hr class="offset-xs"> -->
   
           <div class="col-sm-3 col-md-3 col-md-offset-1">
-            <h1 class="h4">24/7 free support:</h1>
+            <h1 class="h4">24/7 support & Help Center:</h1>
 
             <div style="display: flex; width: 100%; justify-content: center;">
               <div style="display: flex; flex-direction: column; width: 50%;">
@@ -375,5 +328,125 @@
 
     <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
     <script src="../assets/js/carousel-product.js"></script>
+    <script type="text/javascript">
+      let content = document.querySelector('.content');
+      let client = contentful.createClient({
+        space: '506rx1s4kvpq',
+        accessToken: 'cpYUmV3UQjbOMBkY90P-CDkzE1cy5fpdhPdaEvfAn_g'
+      })
+
+      let entryId = '11A5beQDhUeiFyKcaXipYN';
+
+      let addSpinner = () => {
+        let markup = `
+          <center><img src="../assets/img/products/spinningwheel.gif" class="spinner" alt="spinner"></center>
+        `;
+
+        content.insertAdjacentHTML('beforeend', markup);
+      }
+
+      addSpinner();
+
+      let removeSpinner = () => {
+        let el = document.querySelector('.spinner');
+
+        el.remove();
+      }
+
+      let priceSplit = given => {
+        let price = given.toString().split('');
+
+        if (price.length >= 4) {
+          let newPrice = price.splice(-3);
+          let currentPrice = price.join('') + ',' + newPrice.join('');
+
+          if (currentPrice.length > 7) {
+            let current = currentPrice.toString().split('');
+            let endPrice = current.splice(-7);
+            currentPrice = current.join('') + ',' + endPrice.join('');
+          }
+          return currentPrice;
+        }
+      }
+
+      client.getEntries({ content_type: 'powerBank' })
+      .then((response) => {
+        removeSpinner();
+
+        for (var i = 0; i < response.items.length; i++) {
+          generateAll(response.items[i]);
+        }
+        console.log(response)
+      })
+      .catch(console.error)
+
+      let generateAll = entry => {
+        addProducts(entry);
+      };
+
+      let addProducts = entry => {
+        let markup = `
+        <div class="panel panel-default container thumbnail">
+
+        <div class="ads-list-archive">
+             <!-- Image Block -->
+             <div class="col-lg-4 col-md-4 col-sm-4 no-padding">
+                <!-- Img Block -->
+                <div class="ad-archive-img list-3">
+                                    
+                                    
+                                    
+                   <a href="#" data-toggle="modal" data-target="#Modal-Gallery">
+                      <img src="https:${entry.fields.images[0].fields.file.url}" alt="${entry.fields.name}" title="${entry.fields.name}" class="img-responsive">
+                                          
+                   </a>
+                </div>
+                <!-- Img Block -->
+             </div>
+             <!-- Ads Listing -->
+             <div class="clearfix visible-xs-block"></div>
+             <!-- Content Block -->
+             <div class="col-lg-8 col-md-8 col-sm-8 no-padding">
+                <!-- Ad Desc -->
+                <div class="ad-archive-desc">
+                   <!-- Price -->
+                   <div class="ad-price">
+                    <h2>${entry.fields.name}</h2>
+                    <h5>Brand: <a href="#">Nepower</a> | <a href="#">Similar products from Nepower</a></h5>
+                   </div>
+                   <!-- Title -->
+                   <hr>
+                   <h2 class="price">₦${priceSplit(entry.fields.price)}</h2>
+                   <!-- Category -->
+                   <div class="category-title"><a href="tel:+2347017578648" class="hidden-xs"><i class="ion-android-call"></i> CALL TO BUY</a></div>
+                   <!-- Short Description -->
+                   <hr>
+                   <div class="clearfix visible-xs-block"></div>
+
+                   
+                   <!-- Ad History -->
+                    <div class="clearfix archive-history">
+                      <div class="last-updated"><h3>Device Specification</h3></div>
+                            <div class="ad-meta">
+                                <ul>
+                                    <li>${entry.fields.specifications[0]}</li>
+                                    <li>${entry.fields.specifications[1]}</li>
+                                    <li>${entry.fields.specifications[2]}</li>
+                                    <li>${entry.fields.specifications[3]}</li>
+                                    <li>${entry.fields.specifications[4]}</li>
+                                </ul>
+                            </div>
+                   </div>
+                </div>
+                <!-- Ad Desc End -->
+             </div>
+             <!-- Content Block End -->
+        </div>
+    </div>
+        `;
+
+        content.insertAdjacentHTML('beforeend', markup);
+      }
+    </script>
   </body>
 </html>

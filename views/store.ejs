@@ -102,7 +102,7 @@
           <hr class="offset-lg">
 
           <div class="filter">
-            <div class="item">
+            <!-- <div class="item">
                 <div class="title">
                     <a href="#clear" data-action="open" class="down"> <i class="ion-android-arrow-dropdown"></i> Open</a>
                     <a href="#clear" data-action="clear"> <i class="ion-ios-trash-outline"></i> Clear</a>
@@ -134,7 +134,7 @@
                       <input type="checkbox" name="checkbox" value="">
                   </div>
                 </div>
-            </div>
+            </div> -->
 
             <br>
 
@@ -398,7 +398,7 @@
             <!-- <hr class="offset-xs"> -->
   
           <div class="col-sm-3 col-md-3 col-md-offset-1">
-            <h1 class="h4">24/7 free support:</h1>
+            <h1 class="h4">24/7 support & Help Center:</h1>
 
             <div style="display: flex; width: 100%; justify-content: center;">
               <div style="display: flex; flex-direction: column; width: 50%;">
@@ -484,11 +484,19 @@
     <script type="text/javascript">
       let title = document.querySelector('title');
       let content = document.querySelector('.all');
+      let pagination = document.querySelector('.pagination');
 
       let client = contentful.createClient({
         space: '506rx1s4kvpq',
         accessToken: 'cpYUmV3UQjbOMBkY90P-CDkzE1cy5fpdhPdaEvfAn_g'
       })
+
+      let items = [];
+      pagination.style.display = 'none';
+
+      if (items.length > 12) {
+        pagination.style.display = 'block';
+      } else {}
 
       client.getEntries({
         'query': '<%= received %>'
@@ -496,7 +504,9 @@
       .then(function (entries) {
           removeSpinner();
           entries.items.forEach(function (entry) {
-            addProduct(entry);
+            for (var i = 0; i < items.length; i++) {
+              items[i] = addProduct(entry);
+            }
           })
 
           if (entries.items.length == 0) {
