@@ -37,8 +37,6 @@ app.set('view engine', 'ejs');
 
   app.get('/powerbank', function(req, res) {
 
-    let entryId = req.params.id;
-
     res.render('powerbank', {'entryId': entryId});
   });
 

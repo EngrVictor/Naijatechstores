@@ -1,12 +1,14 @@
-let host = document.querySelectorAll('.dropdown-toggle');
-      let prey = document.querySelectorAll('.dropdown-menu');
+let host = document.querySelectorAll('.dropdown-boys');
+      let prey = document.querySelectorAll('.dropdown-girls');
       let content = document.querySelector('#content');
+      let slide = document.querySelector('.slide');
       let blogs = document.querySelector('.spot');
       let caret = document.querySelectorAll('.caret');
 
       multiple = Array.from(prey);
       multiple1 = Array.from(host);
       carets = Array.from(caret);
+
 
       let addCaret = current => {
         span = current.parentNode.querySelector('.caret')
