@@ -37,7 +37,7 @@ app.set('view engine', 'ejs');
 
   app.get('/powerbank', function(req, res) {
 
-    res.render('powerbank', {'entryId': entryId});
+    res.render('powerbank');
   });
 
   app.get('/', function(req, res) {

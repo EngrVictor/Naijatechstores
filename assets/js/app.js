@@ -9,6 +9,8 @@ let host = document.querySelectorAll('.dropdown-boys');
       multiple1 = Array.from(host);
       carets = Array.from(caret);
 
+      host.value = '';
+
 
       let addCaret = current => {
         span = current.parentNode.querySelector('.caret')

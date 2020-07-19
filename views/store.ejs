@@ -67,8 +67,8 @@
             </button>
 
             <ul class="dropdown-menu">
-              <li class="priceToggle"><a href="#"> <i class="ion-arrow-down-c"></i> Price [Low-High]</a></li>
-              <li class="priceToggle"><a href="#"> <i class="ion-arrow-up-c"></i> Price [High-Low]</a></li>
+              <li class="priceToggle" onclick="sortList()"><a href="#"> <i class="ion-arrow-down-c"></i> Price [Low-High]</a></li>
+              <li class="priceToggle" onclick="sortList()"><a href="#"> <i class="ion-arrow-up-c"></i> Price [High-Low]</a></li>
             </ul>
           </div>
 
@@ -327,27 +327,41 @@
       })
       .catch(console.error)
 
-      priceToggle.forEach((current, index) => {
-        current.addEventListener('click', event => {
-          current.classList.contains('active') ? current.classList.remove('active') : current.classList.add('active');
-
-          client.getEntries({
-          'query': '<%= received %>'
-        })
-        .then(function (entries) {
-            removeSpinner();
-            entries.items.forEach(entry => {
-              addProduct(entry)
-            })
-
-            if (entries.items.length == 0) {
-              let markup = `<p class="h3">No such product available at this time check other avaiable products`;
-              content.insertAdjacentHTML('beforeend', markup);
+      function sortList() {
+        let list, i, switching, b, shouldSwitch;
+        list = document.querySelector(".products");
+        switching = true;
+                    console.log(list)
+        
+        while (switching) {
+          
+          switching = false;
+          b = list.querySelector(".product");
+          
+          for (i = 0; i < (b.length - 1); i++) {
+            
+            shouldSwitch = false;
+            
+            if (b[i].closest(".price").innerHTML > b[i + 1].closest(".price").innerHTML) {
+             
+              // shouldSwitch = true;
+              // break;
+              console.log('me')
             }
-        })
-        .catch(console.error)
-          })
-        });
+          }
+          if (shouldSwitch) {
+            
+            b[i].parentNode.insertBefore(b[i + 1], b[i]);
+            switching = true;
+          }
+        }
+      }
+
+      // priceToggle.forEach((current, index) => {
+      //   current.addEventListener('click', event => {
+      //     current.classList.contains('active') ? current.classList.remove('active') : current.classList.add('active');
+      //     addSpinner();
+      // });
 
       let priceSplit = given => {
         let price = given.toString().split('');

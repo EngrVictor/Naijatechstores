@@ -82,14 +82,14 @@
   </head>
 
   <body>
-    <header>
-            <img src="assets/img/carousel/bckg-2.jpeg" alt="Background" class="background hidden-xs hidden-sm img-responsive"/>
-            <img src="assets/img/carousel/bckg-2-sm.jpeg" alt="Background" class="background visible-sm img-responsive"/>
-            <img src="assets/img/carousel/bckg-2-xs.jpeg" alt="Background" class="background visible-xs img-responsive"/>
+    <header style="margin-top: 40px;">
+            <img src="assets/img/carousel/bckg-2.jpg" alt="Background" class="background hidden-xs hidden-sm img-responsive"/>
+            <img src="assets/img/carousel/bckg-2-sm.jpg" alt="Background" class="background visible-sm img-responsive"/>
+            <img src="assets/img/carousel/bckg-2-xs.jpg" alt="Background" class="background visible-xs img-responsive"/>
     </header>
     <div class="toplinks">
       <a href="#" data-toggle="modal" data-target="#Modal-Gallery"> <i class="ion-ios-heart"></i> Favorites </a>
-      <a href="tel:+2347017578648" class="hidden-xs"> <i class="ion-android-call"></i> 0701 757 8648</a>
+      <a href="tel:+2348090586138" class="hidden-xs"> <i class="ion-android-call"></i> 0809 058 6138</a>
     </div>
 
     <nav class="navbar navbar-default">
@@ -104,64 +104,6 @@
     <hr class="offset-lg">
     <div class="content">
       
-    </div>
-
-    <div class="panel panel-default container thumbnail">
-
-        <div class="ads-list-archive">
-             <!-- Image Block -->
-             <div class="col-lg-4 col-md-4 col-sm-4 no-padding">
-                <!-- Img Block -->
-                <div class="ad-archive-img list-3">
-                                    
-                                    
-                                    
-                   <a href="https://naijatechstores.com/ad/acer-aspire-5630/">
-                      <img src="https://naijatechstores.com/wp-content/uploads/2020/05/Untitled-4-313x234.jpg" alt="Acer aspire 5630" class="img-responsive">
-                                          
-                   </a>
-                </div>
-                <!-- Img Block -->
-             </div>
-             <!-- Ads Listing -->
-             <div class="clearfix visible-xs-block"></div>
-             <!-- Content Block -->
-             <div class="col-lg-8 col-md-8 col-sm-8 no-padding">
-                <!-- Ad Desc -->
-                <div class="ad-archive-desc">
-                   <!-- Price -->
-                   <div class="ad-price">
-                    <h2>product name</h2>
-                    <h5>Brand: <a href="#">Phily</a> | <a href="#">Similar products from Phily</a></h5>
-                   </div>
-                   <!-- Title -->
-                   <hr>
-                   <h2 class="price">₦6,000</h2>
-                   <!-- Category -->
-                   <div class="category-title"><button class="btn btn-small btn-primary btn-block">CALL TO BUY</button></div>
-                   <!-- Short Description -->
-                   <hr>
-                   <div class="clearfix visible-xs-block"></div>
-
-                   
-                   <!-- Ad History -->
-                    <div class="clearfix archive-history">
-                      <div class="last-updated"><h3>Device Specification</h3></div>
-                            <div class="ad-meta">
-                                <ul>
-                                    <li>detail</li>
-                                    <li>detail</li>
-                                    <li>detail</li>
-                                    <li>detail</li>
-                                    <li>detail</li>
-                                </ul>
-                            </div>
-                   </div>
-                </div>
-                <!-- Ad Desc End -->
-             </div>
-             <!-- Content Block End -->
-        </div>
     </div>
 
 
@@ -275,7 +217,8 @@
                   16 Onawale Street, <br>
                   off ire akari Road, <br>
                   oshodi isolo Lagos<br>
-                  <a href="https://api.whatsapp.com/send?phone=07036061730" target="_blank"><i class="ion-social-whatsapp"></i> 07036061730</a>
+                  <a href="https://api.whatsapp.com/send?phone=08065917531" target="_blank"><i class="ion-social-whatsapp"></i> 0806 591 7531</a><br>
+                  <a href="https://api.whatsapp.com/send?phone=08094156909" target="_blank"><i class="ion-android-call"></i> 0809 415 6909</a>
                 </address>
               </div>
 
@@ -382,7 +325,15 @@
 
       let generateAll = entry => {
         addProducts(entry);
-      };
+      }; 
+
+      let addList = async entry => {
+        for (var i = 0; i < 3; i++) {
+          await document.querySelectorAll('.listContent').forEach(current => {
+            current.insertAdjacentHTML('beforeend', `<li>${entry[i]}</li>`)
+          })
+        } 
+      }
 
       let addProducts = entry => {
         let markup = `
@@ -418,7 +369,7 @@
                    <hr>
                    <h2 class="price">₦${priceSplit(entry.fields.price)}</h2>
                    <!-- Category -->
-                   <div class="category-title"><a href="tel:+2347017578648" class="hidden-xs"><i class="ion-android-call"></i> CALL TO BUY</a></div>
+                   <div class="category-title"><a href="tel:+2348090586138" class="btn btn-primary btn-block"><i class="ion-android-call"></i> CALL TO BUY</a></div>
                    <!-- Short Description -->
                    <hr>
                    <div class="clearfix visible-xs-block"></div>
@@ -428,12 +379,8 @@
                     <div class="clearfix archive-history">
                       <div class="last-updated"><h3>Device Specification</h3></div>
                             <div class="ad-meta">
-                                <ul>
-                                    <li>${entry.fields.specifications[0]}</li>
-                                    <li>${entry.fields.specifications[1]}</li>
-                                    <li>${entry.fields.specifications[2]}</li>
-                                    <li>${entry.fields.specifications[3]}</li>
-                                    <li>${entry.fields.specifications[4]}</li>
+                                <ul class="listContent">
+                                  ${addList(entry.fields.specifications)}
                                 </ul>
                             </div>
                    </div>
