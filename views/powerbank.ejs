@@ -89,7 +89,7 @@
     </header>
     <div class="toplinks">
       <a href="#" data-toggle="modal" data-target="#Modal-Gallery"> <i class="ion-ios-heart"></i> Favorites </a>
-      <a href="tel:+2348090586138" class="hidden-xs"> <i class="ion-android-call"></i> 0809 058 6138</a>
+      <a href="tel:+2348094156909" class="hidden-xs"> <i class="ion-android-call"></i> 0809 415 6909</a>
     </div>
 
     <nav class="navbar navbar-default">
@@ -197,7 +197,7 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                  <h2 class="modal-title text-center">Seller Callback Form</h2>
+                  <h2 class="modal-title text-center">Order Form</h2>
                   <br>
 
                   <form class="join" action="index.php" method="post">
@@ -243,7 +243,7 @@
             <!-- <hr class="offset-xs"> -->
   
           <div class="col-sm-3 col-md-3 col-md-offset-1">
-            <h1 class="h4">24/7 support & Help Center:</h1>
+            <h1 class="h4">24/7 support & Help Centers:</h1>
 
             <div style="display: flex; width: 100%; justify-content: center;">
               <div style="display: flex; flex-direction: column; width: 50%;">
@@ -349,6 +349,18 @@
           return currentPrice;
         }
       }
+
+      function change(evt) {
+        let text = `<i class="ion-android-call"> 0701 757 8648`;
+
+        if (evt.innerHTML == text) {
+          evt.innerHTML = `<i class="ion-android-call"> Contact Seller`;
+        }  else {
+          evt.innerHTML = text;
+          // evt.setAttribute('href', 'tel:+2347017578648');   
+        }
+
+      }
         
 
       client.getEntries({ content_type: 'powerBank' })
@@ -400,7 +412,7 @@
                    <hr>
                    <h2 class="price">₦${priceSplit(entry.fields.price)} <span><h4 style="display: inline">[Free Delivery]</h4></span></h2>
                    <!-- Category -->
-                   <div class="category-title"><a href="tel:+2348090586138" class="btn btn-primary"><i class="ion-android-call"></i> CALL TO BUY</a><button class="btn btn-primary" data-toggle="modal" data-target="#Modal-Callback"><i class="ion-android-sync"></i> Seller's Callback</button></div>
+                   <div class="category-title"><a onclick="change(this)" class="btn btn-primary"><i class="ion-android-call"></i> CALL TO BUY</a><button class="btn btn-primary" data-toggle="modal" data-target="#Modal-Callback"><i class="ion-android-sync"></i> Order Form</button></div>
                    <!-- Short Description -->
                    <hr>
                    <div class="clearfix visible-xs-block"></div>
