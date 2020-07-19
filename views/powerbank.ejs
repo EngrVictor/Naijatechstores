@@ -187,6 +187,45 @@
       </div>
     </div>
 
+    <div class="modal fade" id="Modal-Callback" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="ion-android-close"></i></span></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <h2 class="modal-title text-center">Seller Callback Form</h2>
+                  <br>
+
+                  <form class="join" action="index.php" method="post">
+                    <input type="text" name="name" value="" placeholder="Name" required="" class="form-control" />
+                    <br>
+
+                    <input type="email" name="email" value="" placeholder="E-mail" required="" class="form-control" />
+                    <br>
+
+                    <input type="number" name="email" value="" placeholder="Phone number" required="" class="form-control" />
+                    <br>
+
+                    <button type="submit" class="btn btn-primary btn-sm">Ok</button> &nbsp;&nbsp;                    
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <p class="text-warning">
+                This form is for us to get back to you when we are not currently available or incase of any network interferance.
+                For more information call our customer support line <a href="mailto:#">sup@example.com</a>
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
       <div class="container">
         <hr class="offset-md">
 
@@ -217,8 +256,7 @@
                   16 Onawale Street, <br>
                   off ire akari Road, <br>
                   oshodi isolo Lagos<br>
-                  <a href="https://api.whatsapp.com/send?phone=08065917531" target="_blank"><i class="ion-social-whatsapp"></i> 0806 591 7531</a><br>
-                  <a href="https://api.whatsapp.com/send?phone=08094156909" target="_blank"><i class="ion-android-call"></i> 0809 415 6909</a>
+                  <a href="https://api.whatsapp.com/send?phone=07036061730" target="_blank"><i class="ion-social-whatsapp"></i> 0703 606 1730</a>
                 </address>
               </div>
 
@@ -340,7 +378,7 @@
                                     
                                     
                                     
-                   <a href="#" data-toggle="modal" data-target="#Modal-Gallery">
+                   <a href="#">
                       <img src="https:${entry.fields.images[0].fields.file.url}" alt="${entry.fields.name}" title="${entry.fields.name}" class="img-responsive">
                                           
                    </a>
@@ -362,7 +400,7 @@
                    <hr>
                    <h2 class="price">₦${priceSplit(entry.fields.price)} <span><h4 style="display: inline">[Free Delivery]</h4></span></h2>
                    <!-- Category -->
-                   <div class="category-title"><a href="tel:+2348090586138" class="btn btn-primary btn-block"><i class="ion-android-call"></i> CALL TO BUY</a></div>
+                   <div class="category-title"><a href="tel:+2348090586138" class="btn btn-primary"><i class="ion-android-call"></i> CALL TO BUY</a><button class="btn btn-primary" data-toggle="modal" data-target="#Modal-Callback"><i class="ion-android-sync"></i> Seller's Callback</button></div>
                    <!-- Short Description -->
                    <hr>
                    <div class="clearfix visible-xs-block"></div>

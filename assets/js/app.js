@@ -57,6 +57,18 @@ let host = document.querySelectorAll('.dropdown-boys');
           `;
       }
 
+      function change(evt) {
+        let text = `<i class="ion-android-call"> 08094156909`;
+
+        if (evt.innerHTML == text) {
+          evt.innerHTML = `<i class="ion-android-call"> Contact Seller`;
+        }  else {
+          evt.innerHTML = text;
+          // evt.setAttribute('href', 'tel:+2347017578648');   
+        }
+
+      }
+
 
       carets.forEach(current => {
          window.addEventListener('click', () => {
@@ -90,7 +102,7 @@ let host = document.querySelectorAll('.dropdown-boys');
                 <hr class="offset-sm">
 
                 <a class="btn btn-link" href="/product/${entry.sys.id}"> <i class="ion-android-open"></i> Details</a>
-                <a class="btn btn-primary btn-sm rounded" href="tel:+2347017578648"> <i class="ion-android-call"></i> Contact Seller</a>
+                <a class="btn btn-primary btn-sm rounded" onclick="change(this)"><i class="ion-android-call"></i> Contact Seller</a>
               </div>
             </div>
           </div>
