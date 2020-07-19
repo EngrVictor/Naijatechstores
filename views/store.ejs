@@ -62,14 +62,11 @@
     <div class="tags">
       <div class="container">
           <div class="btn-group pull-right sorting">
-            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="ion-arrow-down-b"></i> Sorting by price
-            </button>
-
-            <ul class="dropdown-menu">
-              <li class="priceToggle" onclick="sortList()"><a href="#"> <i class="ion-arrow-down-c"></i> Price [Low-High]</a></li>
-              <li class="priceToggle" onclick="sortList()"><a href="#"> <i class="ion-arrow-up-c"></i> Price [High-Low]</a></li>
-            </ul>
+            Sorting by price
+            <select class="price-sorting type-regular" name="price-sorting">
+              <option value="up">Low to high</option>
+              <option value="down">High to low</option>
+          </select>
           </div>
 
           
@@ -327,41 +324,32 @@
       })
       .catch(console.error)
 
-      function sortList() {
-        let list, i, switching, b, shouldSwitch;
-        list = document.querySelector(".products");
-        switching = true;
-                    console.log(list)
-        
-        while (switching) {
-          
-          switching = false;
-          b = list.querySelector(".product");
-          
-          for (i = 0; i < (b.length - 1); i++) {
-            
-            shouldSwitch = false;
-            
-            if (b[i].closest(".price").innerHTML > b[i + 1].closest(".price").innerHTML) {
-             
-              // shouldSwitch = true;
-              // break;
-              console.log('me')
-            }
+      $(document).on("change", ".price-sorting", function() {
+
+          var sortingMethod = $(this).val();
+
+          if(sortingMethod == 'up')
+          {
+              sortProductsPriceAscending();
           }
-          if (shouldSwitch) {
-            
-            b[i].parentNode.insertBefore(b[i + 1], b[i]);
-            switching = true;
+          else if(sortingMethod == 'down')
+          {
+              sortProductsPriceDescending();
           }
-        }
+
+      });
+
+      let sortProductsPriceAscending = () => {
+          var products = $('.product');
+          products.sort(function(a, b){ return $(a).data("price")-$(b).data("price")});
+          $(".products").html(products);
       }
 
-      // priceToggle.forEach((current, index) => {
-      //   current.addEventListener('click', event => {
-      //     current.classList.contains('active') ? current.classList.remove('active') : current.classList.add('active');
-      //     addSpinner();
-      // });
+      let sortProductsPriceDescending = () => {
+          var products = $('.product');
+          products.sort(function(a, b){ return $(b).data("price") - $(a).data("price")});
+          $(".products").html(products);
+      }
 
       let priceSplit = given => {
         let price = given.toString().split('');
@@ -381,7 +369,7 @@
 
       let addProduct = entry => {
         let markup = `
-            <div class="col-sm-6 col-md-4 product">
+            <div class="col-sm-6 col-md-4 product" data-price="${entry.fields.price}">
                 <div class="body">
                   <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
                   <a href="./"><img src="https:${entry.fields.images[0].fields.file.url}" alt="${entry.fields.productName}"/></a>

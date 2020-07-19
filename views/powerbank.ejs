@@ -311,6 +311,7 @@
           return currentPrice;
         }
       }
+        
 
       client.getEntries({ content_type: 'powerBank' })
       .then((response) => {
@@ -326,14 +327,6 @@
       let generateAll = entry => {
         addProducts(entry);
       }; 
-
-      let addList = async entry => {
-        for (var i = 0; i < 3; i++) {
-          await document.querySelectorAll('.listContent').forEach(current => {
-            current.insertAdjacentHTML('beforeend', `<li>${entry[i]}</li>`)
-          })
-        } 
-      }
 
       let addProducts = entry => {
         let markup = `
@@ -367,7 +360,7 @@
                    </div>
                    <!-- Title -->
                    <hr>
-                   <h2 class="price">₦${priceSplit(entry.fields.price)}</h2>
+                   <h2 class="price">₦${priceSplit(entry.fields.price)} <span><h4 style="display: inline">[Free Delivery]</h4></span></h2>
                    <!-- Category -->
                    <div class="category-title"><a href="tel:+2348090586138" class="btn btn-primary btn-block"><i class="ion-android-call"></i> CALL TO BUY</a></div>
                    <!-- Short Description -->
@@ -380,7 +373,9 @@
                       <div class="last-updated"><h3>Device Specification</h3></div>
                             <div class="ad-meta">
                                 <ul class="listContent">
-                                  ${addList(entry.fields.specifications)}
+                                  ${Array(entry.fields.specifications.length).join(0).split(0).map((item, i) => `
+                                    <li>${entry.fields.specifications[i]}</li>
+                                  `).join('')}
                                 </ul>
                             </div>
                    </div>

@@ -10,6 +10,32 @@ let host = document.querySelectorAll('.dropdown-boys');
       carets = Array.from(caret);
 
       host.value = '';
+      $(document).on("change", ".price-sorting", function() {
+
+          var sortingMethod = $(this).val();
+
+          if(sortingMethod == 'up')
+          {
+              sortProductsPriceAscending();
+          }
+          else if(sortingMethod == 'down')
+          {
+              sortProductsPriceDescending();
+          }
+
+      });
+
+      let sortProductsPriceAscending = () => {
+          var products = $('.product');
+          products.sort(function(a, b){ return $(a).data("price")-$(b).data("price")});
+          $("#content").html(products);
+      }
+
+      let sortProductsPriceDescending = () => {
+          var products = $('.product');
+          products.sort(function(a, b){ return $(b).data("price") - $(a).data("price")});
+          $("#content").html(products);
+      }
 
 
       let addCaret = current => {
@@ -53,7 +79,7 @@ let host = document.querySelectorAll('.dropdown-boys');
 
       let addProducts = entry => {
         let markup = `
-          <div class="col-sm-6 col-md-3 product">
+          <div class="col-sm-6 col-md-3 product" data-price="${entry.fields.price}">
             <div class="body">
               <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
               <a href="/product/${entry.sys.id}"><img src="https:${entry.fields.images[0].fields.file.url}" title="${entry.fields.productName}" alt="${entry.fields.productName}"/></a>
